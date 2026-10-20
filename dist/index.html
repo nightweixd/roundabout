@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#20303c">
+  <meta name="description" content="Draw roads, connect a growing city, and keep the traffic flowing. An independently implemented traffic puzzle inspired by Roundabout.">
+  <title>Roundabout · A calm traffic puzzle</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="city" aria-label="City map. Drag between a house and its matching building to draw a road." tabindex="0"></canvas>
+  <main id="interface">
+    <header id="hud" hidden>
+      <div class="hud-group"><span class="pill" id="score">Trips 0 · Week 1</span><span class="pill coin-pill"><span class="coin" aria-hidden="true">◉</span><span id="coins">0</span></span></div>
+      <div class="hud-group"><span class="pill" id="clock">☀ 8:00 AM</span><button id="sound" class="pill" aria-label="Enable sound" title="Sound">Sound off</button></div>
+    </header>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <section id="welcome" class="overlay splash">
+      <img class="brand-large" src="icon.svg" alt="" width="150" height="150">
+      <h1>Roundabout</h1>
+      <p>Connect every house. Keep the city moving.</p>
+      <button id="get-started" class="start">Get started <span aria-hidden="true">▶</span></button>
+    </section>
+    <section id="menu" class="overlay menu" hidden aria-label="Choose a city">
+      <div class="menu-body">
+        <img class="brand-small" src="icon.svg" alt="" width="62" height="62">
+        <h1>Roundabout</h1><p class="menu-sub">A small city. A little planning. A better way around.</p>
+        <button id="resume" class="primary" hidden>Continue your city</button>
+        <h2>Choose your city</h2><div id="city-list" class="city-list"></div>
+        <div class="menu-links"><button id="how-to">How to play</button><button id="about">About</button></div>
+        <p class="credit">Inspired by <a href="https://roundabout.ahmadfiroz.com/" target="_blank" rel="noopener noreferrer">Roundabout by Ahmad Firoz ↗</a><br>Independent recreation · Your progress stays in this browser</p>
+      </div>
+    </section>
+    <div id="coach" class="coach" hidden><div id="coach-text">Drag a road from the house to the building of the same colour.</div><div class="coach-bottom"><div id="coach-dots" aria-hidden="true"><i class="current"></i><i></i><i></i></div><button id="skip">Skip</button></div></div>
+    <div id="controls" hidden>
+      <nav id="tools" aria-label="Road tools"></nav>
+      <nav class="actions" aria-label="Game controls"><button id="shop"><kbd>S</kbd> Workshop</button><button id="pause"><kbd>Space</kbd> <span>Pause</span></button><button id="open-menu"><kbd>Esc</kbd> Menu</button></nav>
+      <p class="map-hint">Drag to build · Right-click to erase · Scroll to zoom · H + drag to pan</p>
+    </div>
+    <section id="dialog" class="overlay dialog" hidden role="dialog" aria-modal="true" aria-labelledby="dialog-title"><div class="dialog-inner"><h2 id="dialog-title"></h2><div id="dialog-content"></div><button id="close-dialog">Back to the city</button></div></section>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
